@@ -1,5 +1,8 @@
-def divide(num1, num2):
-    return num1/num2
+def divide(a, b):
+    try:
+        return a/b
+    except (ZeroDivisionError, TypeError) as err:
+        print("kazka cia pridirbai")
+        print(err)
 
-print(divide(2, 5))
-print(divide(2, 10))
+print(divide(1, 0))

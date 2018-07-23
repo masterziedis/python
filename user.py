@@ -40,22 +40,28 @@ class User:
         self.age += 1
         return f"Happy {self.age}th birthday, {self.first}"
 
-# print(user2.full_name())
-# print(user1.initials())
-# print(user2.initials())
-# print(user1.likes("Alutis"))
+
+class Moderator(User):
+    total_mods = 0
+    def __init__(self, first, last, age, community):
+        super().__init__(first, last, age)
+        self.community = community
+        Moderator.total_mods += 1
+
+    @classmethod
+    def display_active_mods(cls):
+        return f"The are {cls.total_mods} active moderators"
+
+    def remove_post(self):
+        return f"{self.full_name()} removed a post from the {self.community} community"
 
 
-# print(user1.age)
-# print(user2.is_senior())
-# print(user1.birthday())
-# print(user1.age)
-# print(User.display_active_users())
 
-# user1 = User("Jose", "Narkata", 28)
-# user2 = User("Longa", "Prastitutka", 97)
+user1 = User("Jose", "Narkata", 28)
+user2 = User("Jose", "Narkata", 28)
+user3 = User("Jose", "Narkata", 28)
 
-# print(User.display_active_users())
-
-tom = User.from_string("Tom,Jones,89")
-print(tom)
+jasmine1 = Moderator("Jasmine", "Radzi", 52, "Piano")
+jasmine2 = Moderator("Jasmine", "Radzi", 52, "Piano")
+print(User.display_active_users())
+print(Moderator.display_active_mods())
